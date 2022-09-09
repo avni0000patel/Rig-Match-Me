@@ -1,11 +1,13 @@
 router = require('express').Router();
 // const { User, Genre } = require('../models');
 
-router.get('/newRig', (req, res) => {
-    try {
+// router.get('/newRig', (req, res) => {
+//     try {
 
-    }
-    res.render('newRig');
-});
+//     } catch {
+
+//     }
+//     res.render('newRig');
+// });
 
 module.exports = router;
