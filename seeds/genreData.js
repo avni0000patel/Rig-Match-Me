@@ -26,6 +26,16 @@ const genredata = [
     description: 'Alternative rock music is a rock sub-genre that blends elements of conventional rock with influences from other musical styles (such as punk rock, hard rock, hip-hop, or folk)',
     example: 'Red Hot Chilli Peppers',
   },
+  {
+    genre: 'Punk Rock',
+    description: 'Punk rock music is a rock sub-genre that typically have short, fast-paced songs with minimal tehcnicality, usually accompanied with shouting vocals',
+    example: 'Ramones',
+  },
+  {
+    genre: 'Reggae',
+    description: 'Punk rock music is a rock sub-genre that typically have short, fast-paced songs with minimal tehcnicality, usually accompanied with shouting vocals',
+    example: 'Ramones',
+  },
 ];
 
 const seedGenres = () => Genre.bulkCreate(genredata);
