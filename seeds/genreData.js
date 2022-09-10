@@ -33,8 +33,8 @@ const genredata = [
   },
   {
     genre: 'Reggae',
-    description: 'Punk rock music is a rock sub-genre that typically have short, fast-paced songs with minimal tehcnicality, usually accompanied with shouting vocals',
-    example: 'Ramones',
+    description: 'Reggae is a style of popular music with a strongly accented subsidiary beat, originating in Jamaica',
+    example: 'Bob Marley',
   },
 ];
 console.log(genredata);
