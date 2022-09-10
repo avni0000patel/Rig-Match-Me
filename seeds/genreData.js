@@ -37,7 +37,9 @@ const genredata = [
     example: 'Ramones',
   },
 ];
+console.log(genredata);
 
 const seedGenres = () => Genre.bulkCreate(genredata);
+console.log(seedGenres);
 
 module.exports = seedGenres;
