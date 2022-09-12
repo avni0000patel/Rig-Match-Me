@@ -10,48 +10,35 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="icon" href="/public/images/favicon.ico" />
+    <link rel="icon" href="/images/favicon.ico" />
   </head>
 
   <body>
-    <div class="flex-column justify-space-around">
-      <header class="display-flex justify-space-between align-center p-2">
-        {{! <h1>
-          <a href="/">Rig Match Me</a>
-        </h1> }}
+    <div>
+      <header class="p-0">
 
-        {{! jumbotron }}
-
-        <div class="p-3 bg-light">
+        {{! JUMBOTRON START }}
+        <div class="bg-light">
           <div
-            class="container-fluid py-3 d-flex justify-content-center flex-column"
+            class="container-fluid d-flex justify-content-center flex-column p-0"
           >
-            {{! <h1 class="display-5 fw-bold text-center">Rig Match Me</h1> }}
             <div class="d-flex justify-content-center">
-              <div class="col-sm-5">
+              <div>
                 <img
-                  src="/images/RigMatchMeLogo.svg"
-                  class="img-fluid"
-                  alt="Rig Match Me with amp cord extending from the 'e'"
+                  src="/images/bg1.png"
+                  class="vw-100 h-auto flex-fill p-0"
+                  alt="Spackled wall texture with vector drawings of a saxophone, drum kit, electric guitar, a pair of maracas and the Rig Match Me logo in the center"
                 />
               </div>
             </div>
 
-            <div class="d-flex justify-content-center">
-              <p class="col-md-8 fs-5 text-center">The ONLY place on the web
-                where you can customize, store and share your musical rigs! Sign
-                up for FREE and get started right away!</p>
-            </div>
-
           </div>
         </div>
+        {{! JUMBOTRON END }}
 
-        {{! jumbotron end }}
-
-        {{! Nav Bar Start }}
+        {{! NAVBAR START }}
         <nav class="navbar navbar-expand-lg bg-dark">
           <div class="container-fluid">
-            {{! <a class="navbar-brand text-light" href="/"><h1>Rig Match Me</h1></a> }}
             <div
               class="collapse navbar-collapse d-flex justify-content-center"
               id="navbarNav"
@@ -102,20 +89,7 @@
             </div>
           </div>
         </nav>
-
-        {{! Nav Bar End }}
-
-        {{!--  
-        <nav>
-          <!-- Conditionally render login or logout links -->
-          <a href="/">Home</a>
-          {{#if logged_in}}
-            <a href="/" id="logout">Logout</a>
-          {{else}}
-            <a href="/login">Login</a>
-          {{/if}}
-        </nav>
-        --}}
+        {{! NAVBAR END}}
 
       </header>
       <main class="container container-fluid mt-5">
