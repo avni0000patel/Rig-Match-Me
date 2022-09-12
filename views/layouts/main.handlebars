@@ -1,44 +1,139 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rig Match Me</title>
-    <link rel="stylesheet" href="/css/jass.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" href="/public/images/favicon.ico">
-</head>
+    <link rel="stylesheet" href="/css/jass.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/public/images/favicon.ico" />
+  </head>
 
-<body>
+  <body>
     <div class="flex-column justify-space-around">
-        <header class="display-flex justify-space-between align-center p-2">
-            <h1>
-                <a href="/">Rig Match Me</a>
-            </h1>
-            <nav>
-                <!-- Conditionally render login or logout links -->
-                <a href="/">Home</a>
-                {{#if logged_in}}
-                <a href="/" id="logout">Logout</a>
-                {{else}}
-                <a href="/login">Login</a>
-                {{/if}}
-            </nav>
-        </header>
-        <main class="container container-fluid mt-5">
-            <!-- Render the sub layout -->
-            {{{ body }}}
-        </main>
-        <footer>
+      <header class="display-flex justify-space-between align-center p-2">
+        {{! <h1>
+          <a href="/">Rig Match Me</a>
+        </h1> }}
 
-        </footer>
+        {{! jumbotron }}
+
+        <div class="p-3 bg-light">
+          <div
+            class="container-fluid py-3 d-flex justify-content-center flex-column"
+          >
+            {{! <h1 class="display-5 fw-bold text-center">Rig Match Me</h1> }}
+            <div class="d-flex justify-content-center">
+              <div class="col-sm-5">
+                <img
+                  src="/images/RigMatchMeLogo.svg"
+                  class="img-fluid"
+                  alt="Rig Match Me with amp cord extending from the 'e'"
+                />
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+              <p class="col-md-8 fs-5 text-center">The ONLY place on the web
+                where you can customize, store and share your musical rigs! Sign
+                up for FREE and get started right away!</p>
+            </div>
+
+          </div>
+        </div>
+
+        {{! jumbotron end }}
+
+        {{! Nav Bar Start }}
+        <nav class="navbar navbar-expand-lg bg-dark">
+          <div class="container-fluid">
+            {{! <a class="navbar-brand text-light" href="/"><h1>Rig Match Me</h1></a> }}
+            <div
+              class="collapse navbar-collapse d-flex justify-content-center"
+              id="navbarNav"
+            >
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active text-light"
+                    aria-current="page"
+                    href="/"
+                  ><h4>Home</h4></a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active text-light"
+                    aria-current="page"
+                    href="/"
+                  ><h4>About Us</h4></a>
+                </li>
+                {{#if logged_in}}
+                  <li class="nav-item">
+                    <a
+                      class="nav-link text-light"
+                      href="/newRig"
+                      id="newRig"
+                    ><h4>Build a New Rig</h4></a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link text-light"
+                      href="/newRig"
+                      id="newRig"
+                    ><h4>View My Rigs</h4></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="/" id="logout"><h4>Log
+                        Out</h4></a>
+                  </li>
+                {{else}}
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="/login"><h4>Log In</h4></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="/signup"><h4>Sign Up</h4></a>
+                  </li>
+                {{/if}}
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        {{! Nav Bar End }}
+
+        {{!--  
+        <nav>
+          <!-- Conditionally render login or logout links -->
+          <a href="/">Home</a>
+          {{#if logged_in}}
+            <a href="/" id="logout">Logout</a>
+          {{else}}
+            <a href="/login">Login</a>
+          {{/if}}
+        </nav>
+        --}}
+
+      </header>
+      <main class="container container-fluid mt-5">
+        <!-- Render the sub layout -->
+        {{{body}}}
+      </main>
+      <footer>
+
+      </footer>
     </div>
 
     <!-- Render script for logged in users only -->
     {{#if logged_in}}
-    <script src="/public/js/logout.js"></script>
+      <script src="/public/js/logout.js"></script>
     {{/if}}
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    ></script>
+  </body>
 
 </html>
