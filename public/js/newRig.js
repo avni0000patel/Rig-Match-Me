@@ -1,7 +1,7 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
 
-    const genre = document.querySelector(`select[name="genre"]`).value.trim();
+    const genre = document.querySelector(".genre").value.trim();
 
     const response = await fetch(`/api/rig`, {
         method: 'POST',
