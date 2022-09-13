@@ -17,7 +17,7 @@
 </section>
 
 <section id="bg-img-3">
-  <div class="text-2 d-flex justify-content-center border">
+  <div class="text-2 position-absolute top-50 start-50 translate-middle border">
     <span class="col-md-8 fs-5 text-center text-light home-text">What are you
       waiting for? Get started today for free!
       <button
@@ -30,7 +30,7 @@
   </div>
 </section>
 
-<!-- Modal -->
+<!-- Sign Up Modal -->
 <div
   class="modal fade"
   id="signup"
@@ -67,9 +67,61 @@
           </div>
 
           <button
-            class="w-100 btn btn-lg btn-primary"
+            class="w-100 btn btn-lg btn-primary mb-3"
             type="submit"
-          >Submit</button>
+          >Sign Up</button>
+
+          <a href="" data-bs-toggle="modal"
+        data-bs-target="#login">Already a member? Click here to log in!</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Log In Modal -->
+<div
+  class="modal fade"
+  id="login"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form>
+          <div class="d-flex flex-row justify-content-between">
+          <h1 class="d-inline h3 mb-3 fw-normal">Log In</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+
+          <button
+            class="w-100 btn btn-lg btn-primary mb-3"
+            type="submit"
+          >Log In</button>
+
+          <a href="" data-bs-toggle="modal"
+        data-bs-target="#signup">Need an account? Click here to sign up!</a>
         </form>
       </div>
     </div>
