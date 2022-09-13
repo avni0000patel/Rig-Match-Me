@@ -1,6 +1,7 @@
 body,
 html {
   height: 100%;
+  overflow-x: hidden;
 }
 
 #bg-img-1 {
@@ -11,8 +12,45 @@ html {
   height: 100%;
 
   /* Create the parallax scrolling effect */
+  position: relative;
   background-attachment: fixed;
-  background-position: center;
+  background-position: top 100px;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.text-1 {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+#bg-img-2 {
+  /* The image used */
+  background-image: url("../images/homeimage2.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  position: relative;
+  background-attachment: fixed;
+  background-position: top 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nav-item {
+  font-family: "Caveat", cursive;
 }
