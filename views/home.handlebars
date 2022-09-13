@@ -3,10 +3,75 @@
     <span class="border">Scroll Down to Explore!</span>
   </div>
 </section>
+
 <section id="bg-img-2">
-  <div class="text-1 d-flex justify-content-center">
-    <span class="col-md-4 fs-5 text-center border">The ONLY place on the web
-      where you can customize, store and share your musical rigs! Sign up for
-      FREE and get started right away!</span>
+  <div class="text-2 position-absolute top-50 start-50 translate-middle border">
+    <div class="d-flex flex-column flex-fill">
+    <h2 class="text-center text-light home-text">About Us</h2>
+    <p>&#10;</p>
+    <p class="fs-5 text-center text-light home-text d-inline">Learning a new instrument can be hard, especially just figuring out what instrument to start with! Joseph Leano, Avni Patel and Alvin Pollard set out to simplify this process with "Rig Match Me". We provide a guided tour of instruments to help steer you towards getting properly setup for whatever genre of music you are interested in playing! As a result, we're the ONLY place on
+      the web where you can customize, store and share your musical rigs! Sign
+      up for FREE and get started right away!<p>
+    </div>
   </div>
 </section>
+
+<section id="bg-img-3">
+  <div class="text-2 d-flex justify-content-center border">
+    <span class="col-md-8 fs-5 text-center text-light home-text">What are you
+      waiting for? Get started today for free!
+      <button
+        type="button"
+        class="btn btn-success text-light"
+        data-bs-toggle="modal"
+        data-bs-target="#signup"
+      >Sign Up!</button>
+    </span>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="signup"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form>
+          <div class="d-flex flex-row justify-content-between">
+          <h1 class="d-inline h3 mb-3 fw-normal">Sign Up</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+
+          <button
+            class="w-100 btn btn-lg btn-primary"
+            type="submit"
+          >Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
