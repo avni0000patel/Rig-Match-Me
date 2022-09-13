@@ -1,13 +1,13 @@
-const Genre = require('./Genre');
-const User = require('./User');
+const Genre = require("./genre");
+const User = require("./user");
 
 User.hasMany(Genre, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
 });
 
 Genre.belongsTo(User, {
-    foreignKey: 'user_id'
+  foreignKey: "user_id",
 });
 
 module.exports = { Genre, User };
