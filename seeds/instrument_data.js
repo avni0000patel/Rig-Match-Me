@@ -2,14 +2,6 @@ const { Instrument } = require('../models');
 
 const instrumentdata = [
     {
-        instrument_type: '',
-        model: '',
-        image: '',
-        description: '',
-        // genre: ,
-        budget: '',
-    },
-    {
         instrument_type: 'Electric Guitar',
         model: 'Squier Bullet Strat HT',
         image: 'https://media.sweetwater.com/api/i/q-82__f-webp__ha-61cf53637d5ec413__hmac-e98af723307ad0283fe17253070e05ba349b3c75/images/closeup/750-BulletSGIHT_front.jpg.auto.webp',
@@ -209,8 +201,10 @@ const instrumentdata = [
         // genre: ,
         budget: '$$$',
     },
-]
+];
+console.log(instrumentdata);
 
 const seedInstruments = () => Instrument.bulkCreate(instrumentdata);
+console.log(seedInstruments);
 
 module.exports = seedInstruments;
