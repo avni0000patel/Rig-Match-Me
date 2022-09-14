@@ -82,3 +82,32 @@ html {
 .nav-item {
   font-family: "Caveat", cursive;
 }
+
+/* --------------------------- CREATE RIG PAGE SPECFIC ------------------------------ */
+
+#create-rig-list {
+  font-family: "Caveat", cursive;
+}
+
+#create-rig-list p {
+  border-bottom: 2px solid currentColor;
+  text-align: center;
+}
+
+#create-rig-list ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#chalkboard {
+  background-image: url("../images/chalkboard2.jpg");
+  background-size: contain;
+}
+
+#create-rig-staging-area {
+  background-image: url("../images/create-rig-bg.jpg");
+  background-size: cover;
+  filter: saturate(2);
+}

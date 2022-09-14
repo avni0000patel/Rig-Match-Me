@@ -21,13 +21,22 @@
 // document
 //   .querySelector(".new-rig-form")
 //   .addEventListener("submit", newFormHandler);
-
-const genreDropdown = document.querySelector("#genre");
+const rigTasks = document.querySelectorAll(".rig-task");
 let currentItem = 0;
-console.log(genreDropdown);
+let currentRigTask = 4;
 
-function getInstruments() {
-  fetch("/");
+// Display Next Rig Task and cross off the previous one
+function showNextRigTask(index) {
+  if (index === 0) {
+    rigTasks[index].classList.replace("invisible", "visible");
+  } else if (index >= 0) {
+    for (let i = 0; i < rigTasks.length; i++)
+      if (i < index) {
+        rigTasks[i].classList.add("text-decoration-line-through");
+        rigTasks[i].classList.replace("invisible", "visible");
+      }
+    rigTasks[index].classList.replace("invisible", "visible");
+  }
 }
 
 function getNextRigItem(current) {
@@ -38,6 +47,4 @@ function getNextRigItem(current) {
   }
 }
 
-genreDropdown.addEventListener("change", function logChange(event) {
-  console.log(event.target.value);
-});
+showNextRigTask(currentRigTask);
