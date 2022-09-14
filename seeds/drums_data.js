@@ -2,14 +2,6 @@ const { Drums } = require("../models");
 
 const drumsdata = [
   {
-    gear_type: "",
-    model: "",
-    image: "",
-    description: "",
-    // genre: ,
-    budget: "",
-  },
-  {
     gear_type: "Drum Pedal",
     model: "DW DWCP3000 3000 Series Single Bass Drum Pedal",
     image:

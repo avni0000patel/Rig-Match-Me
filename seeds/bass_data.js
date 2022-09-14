@@ -2,14 +2,6 @@ const { Bass } = require("../models");
 
 const bassdata = [
   {
-    gear_type: "",
-    model: "",
-    image: "",
-    description: "",
-    // genre: ,
-    budget: "",
-  },
-  {
     gear_type: "Bass Amplifier",
     model: "Fender Rumble 40 1x10 40-watt Bass Combo Amp",
     image:

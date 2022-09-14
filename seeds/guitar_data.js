@@ -2,14 +2,6 @@ const { Guitar } = require("../models");
 
 const guitardata = [
   {
-    gear_type: "",
-    model: "",
-    image: "",
-    description: "",
-    // genre: ,
-    budget: "",
-  },
-  {
     gear_type: "Guitar Amplifier",
     model: "Fender Mustang LT 25 1x8 25-watt Combo Amp",
     image:
