@@ -32,13 +32,17 @@ Instrument.hasMany(User, {
     onDelete: 'CASCADE'
 });
 
-Genre.hasMany(Instrument, {
+Genre.belongsToMany(Instrument, {
+    through: 'instrumentGenre',
+    as: 'instruments',
     foreignKey: 'genre_id',
     onDelete: 'CASCADE'
 });
 
-Instrument.belongsTo(Genre, {
-    foreignKey: 'genre_id',
+Instrument.belongsToMany(Genre, {
+    through: 'instrumentGenre',
+    as: 'genres',
+    foreignKey: 'instrument_id',
     onDelete: 'CASCADE'
 })
 
