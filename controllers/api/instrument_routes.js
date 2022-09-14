@@ -7,11 +7,7 @@ const { User, Genre, Instrument } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const instrumentData = await Instrument.findAll({
-            include: [
-                {
-                    model: Genre,
-                }
-            ]
+            // include: [{ model: User }, { model: Genre }]
         });
         console.log(instrumentData);
 

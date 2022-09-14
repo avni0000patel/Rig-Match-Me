@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { response } = require('express');
-const { User, Genre } = require('../../models');
+const { User, Genre, Instrument } = require('../../models');
 
 // The `/api/genres` endpoint
 
@@ -8,12 +8,20 @@ const { User, Genre } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const genreData = await Genre.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['username']
-                }
-            ]
+            // include: [
+            //     {
+            //         model: User,
+            //         attributes: ['username']
+            //     },
+            //     {
+            //         model: Instrument,
+            //         attributes: ['id', 'instrument_type', 'model', 'image', 'description', 'budget', 'genre_id'],
+            //         include: {
+            //             model: User,
+            //             attributes: ['username']
+            //         }
+            //     }
+            // ]
         });
 
         res.status(200).json(genreData);

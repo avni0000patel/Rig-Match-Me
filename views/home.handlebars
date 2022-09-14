@@ -7,11 +7,15 @@
 <section id="bg-img-2">
   <div class="text-2 position-absolute top-50 start-50 translate-middle border">
     <div class="d-flex flex-column flex-fill">
-    <h2 class="text-center text-light home-text">About Us</h2>
-    <p>&#10;</p>
-    <p class="fs-5 text-center text-light home-text d-inline">Learning a new instrument can be hard, especially just figuring out what instrument to start with! Joseph Leano, Avni Patel and Alvin Pollard set out to simplify this process with "Rig Match Me". We provide a guided tour of instruments to help steer you towards getting properly setup for whatever genre of music you are interested in playing! As a result, we're the ONLY place on
-      the web where you can customize, store and share your musical rigs! Sign
-      up for FREE and get started right away!<p>
+      <h2 class="text-center text-light home-text">About Us</h2>
+      <p>&#10;</p>
+      <p class="fs-5 text-center text-light home-text d-inline">Learning a new instrument can be hard, especially just
+        figuring out what instrument to start with! Joseph Leano, Avni Patel and Alvin Pollard set out to simplify this
+        process with "Rig Match Me". We provide a guided tour of instruments to help steer you towards getting properly
+        setup for whatever genre of music you are interested in playing! As a result, we're the ONLY place on
+        the web where you can customize, store and share your musical rigs! Sign
+        up for FREE and get started right away!
+      <p>
     </div>
   </div>
 </section>
@@ -20,59 +24,37 @@
   <div class="text-2 position-absolute top-50 start-50 translate-middle border">
     <span class="col-md-8 fs-5 text-center text-light home-text">What are you
       waiting for? Get started today for free!
-      <button
-        type="button"
-        class="btn btn-success text-light"
-        data-bs-toggle="modal"
-        data-bs-target="#signup"
-      >Sign Up!</button>
+      <button type="button" class="btn btn-success text-light" data-bs-toggle="modal" data-bs-target="#signup">Sign
+        Up!</button>
     </span>
   </div>
 </section>
 
 <!-- Sign Up Modal -->
-<div
-  class="modal fade"
-  id="signup"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="signup" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
         <form class="signup-form">
           <div class="d-flex flex-row justify-content-between">
-          <h1 class="d-inline h3 mb-3 fw-normal">Sign Up</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h1 class="d-inline h3 mb-3 fw-normal">Sign Up</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="form-floating mb-3">
-            <input
-              type="type"
-              class="form-control"
-              id="username-signup"
-              placeholder="Please enter a Username"
-            />
-            <label for="username">Username</label>
+            <input type="type" class="form-control username-signup" id="username-signup"
+              placeholder="Please enter a Username" />
+            <label for="username-signup">Username</label>
           </div>
           <div class="form-floating mb-3">
-            <input
-              type="password"
-              class="form-control"
-              id="password-signup"
-              placeholder="Please enter a Password (min: 8 characters)"
-            />
-            <label for="password-login">Password</label>
+            <input type="password" class="form-control password-signup" id="password-signup"
+              placeholder="Please enter a Password (min: 8 characters)" />
+            <label for="password-signup">Password</label>
           </div>
 
-          <button
-            class="w-100 btn btn-lg btn-primary mb-3 signup-form"
-            type="submit"
-          >Sign Up</button>
+          <button class="w-100 btn btn-lg btn-primary mb-3 signup-form" type="submit">Sign Up</button>
 
-          <a href="" data-bs-toggle="modal"
-        data-bs-target="#login">Already a member? Click here to log in!</a>
+          <a href="" data-bs-toggle="modal" data-bs-target="#login">Already a member? Click here to log in!</a>
         </form>
       </div>
     </div>
@@ -80,48 +62,28 @@
 </div>
 
 <!-- Log In Modal -->
-<div
-  class="modal fade"
-  id="login"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="login" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
         <form class="login-form">
           <div class="d-flex flex-row justify-content-between">
-          <h1 class="d-inline h3 mb-3 fw-normal">Log In</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h1 class="d-inline h3 mb-3 fw-normal">Log In</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="form-floating mb-3">
-            <input
-              type="type"
-              class="form-control"
-              id="username-login"
-              placeholder="Username"
-            />
+            <input type="type" class="form-control" id="username-login" placeholder="Username" />
             <label for="username">Username</label>
           </div>
           <div class="form-floating mb-3">
-            <input
-              type="password"
-              class="form-control"
-              id="password-login"
-              placeholder="Password"
-            />
+            <input type="password" class="form-control" id="password-login" placeholder="Password" />
             <label for="password-login">Password</label>
           </div>
 
-          <button
-            class="w-100 btn btn-lg btn-primary mb-3 login-form"
-            type="submit"
-          >Log In</button>
+          <button class="w-100 btn btn-lg btn-primary mb-3 login-form" type="submit">Log In</button>
 
-          <a href="" data-bs-toggle="modal"
-        data-bs-target="#signup">Need an account? Click here to sign up!</a>
+          <a href="" data-bs-toggle="modal" data-bs-target="#signup">Need an account? Click here to sign up!</a>
         </form>
       </div>
     </div>
@@ -129,4 +91,4 @@
 </div>
 
 <script src="/js/login.js"></script>
-<script src="js/signup.js"></script>
+<script src="/js/signup.js"></script>
