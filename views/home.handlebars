@@ -41,7 +41,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
-        <form>
+        <form class="signup-form">
           <div class="d-flex flex-row justify-content-between">
           <h1 class="d-inline h3 mb-3 fw-normal">Sign Up</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -49,25 +49,25 @@
 
           <div class="form-floating mb-3">
             <input
-              type="email"
+              type="type"
               class="form-control"
-              id="floatingInput"
-              placeholder="name@example.com"
+              id="username-signup"
+              placeholder="Please enter a Username"
             />
-            <label for="floatingInput">Email address</label>
+            <label for="username">Username</label>
           </div>
           <div class="form-floating mb-3">
             <input
               type="password"
               class="form-control"
-              id="floatingPassword"
-              placeholder="Password"
+              id="password-signup"
+              placeholder="Please enter a Password (min: 8 characters)"
             />
-            <label for="floatingPassword">Password</label>
+            <label for="password-login">Password</label>
           </div>
 
           <button
-            class="w-100 btn btn-lg btn-primary mb-3"
+            class="w-100 btn btn-lg btn-primary mb-3 signup-form"
             type="submit"
           >Sign Up</button>
 
@@ -90,7 +90,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
-        <form>
+        <form class="login-form">
           <div class="d-flex flex-row justify-content-between">
           <h1 class="d-inline h3 mb-3 fw-normal">Log In</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -98,25 +98,25 @@
 
           <div class="form-floating mb-3">
             <input
-              type="email"
+              type="type"
               class="form-control"
-              id="floatingInput"
-              placeholder="name@example.com"
+              id="username-login"
+              placeholder="Username"
             />
-            <label for="floatingInput">Email address</label>
+            <label for="username">Username</label>
           </div>
           <div class="form-floating mb-3">
             <input
               type="password"
               class="form-control"
-              id="floatingPassword"
+              id="password-login"
               placeholder="Password"
             />
-            <label for="floatingPassword">Password</label>
+            <label for="password-login">Password</label>
           </div>
 
           <button
-            class="w-100 btn btn-lg btn-primary mb-3"
+            class="w-100 btn btn-lg btn-primary mb-3 login-form"
             type="submit"
           >Log In</button>
 
@@ -127,3 +127,6 @@
     </div>
   </div>
 </div>
+
+<script src="/js/login.js"></script>
+<script src="js/signup.js"></script>
