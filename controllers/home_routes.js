@@ -1,8 +1,10 @@
 const router = require("express").Router();
-const {} = require("../models");
+const { } = require("../models");
 
 router.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", {
+    logged_in: req.session.logged_in
+  });
 });
 
 router.get("/login", (req, res) => {
