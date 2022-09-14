@@ -32,6 +32,7 @@ router.get("/", async (req, res) => {
 
     res.render("new_rig", {
       genres,
+      logged_in: req.session.logged_in
       // instruments
     });
 
@@ -57,7 +58,8 @@ router.get("/", async (req, res) => {
     console.log(instruments);
 
     res.render("new_rig", {
-      instruments
+      instruments,
+      logged_in: req.session.logged_in
     });
 
   } catch (err) {
