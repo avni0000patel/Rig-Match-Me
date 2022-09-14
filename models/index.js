@@ -1,6 +1,7 @@
 const Genre = require('./Genre');
 const User = require('./User');
 const Instrument = require('./Instrument');
+const Rig = require('./Rig');
 
 User.hasMany(Genre, {
     foreignKey: 'user_id',
@@ -12,12 +13,22 @@ User.hasMany(Instrument, {
     onDelete: 'CASCADE'
 });
 
+User.hasMany(Rig, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+});
+
 Genre.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
 
 Instrument.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+});
+
+Rig.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
@@ -46,4 +57,4 @@ Instrument.belongsToMany(Genre, {
     onDelete: 'CASCADE'
 })
 
-module.exports = { Genre, User, Instrument };
+module.exports = { Genre, User, Instrument, Rig };
