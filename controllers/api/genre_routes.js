@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { response } = require('express');
 const { User, Genre } = require('../../models');
 
 // The `/api/genres` endpoint
@@ -15,6 +16,18 @@ router.get('/', async (req, res) => {
             ]
         });
 
+        res.status(200).json(genreData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+})
+
+// Get genre by ID
+router.get('/genre:id', async (req, res) => {
+    const instId = req.params.id.slice(1);
+    try {
+        const genreData = await Genre.findByPk(instId)
         res.status(200).json(genreData);
     } catch (err) {
         console.log(err);
