@@ -1,8 +1,26 @@
-<div>
+<div class="d-flex justify-content-center vh-100">
 
-  <h2> Create New Rig </h2>
+  <div
+    id="chalkboard"
+    class="col-3 p-3 bg-dark d-flex justify-content-center align-items-start"
+  >
+    <div id="create-rig-list" class="d-flex flex-column">
+      <p class="fs-1 text-light">
+        Create New Rig
+      </p>
+      <ul class="text-light fs-2">
+        <li class="rig-task invisible">Choose a Genre</li>
+        <li class="rig-task invisible">Choose an Intrument Category</li>
+        <li class="rig-task invisible">Choose an Instrument Model</li>
+        <li class="rig-task invisible">Choose your First Accessory</li>
+        <li class="rig-task invisible">Choose your Second Accessory</li>
+      </ul>
+    </div>
 
-  <form class="form new-rig-form">
+  </div>
+  <div id="create-rig-staging-area" class="col-sm-9 bg-light p-3">
+  </div>
+  {{!-- <form class="form new-rig-form">
     <div class="form-group">
       <label for="genre">Choose a genre:</label>
       <select id="genre" name=" genre">
@@ -10,11 +28,21 @@
           <option value="{{genre.genre}}">{{genre.genre}}</option>
         {{/each}}
       </select>
+
+      <div class="invisible" id="instrument">
+        <label for="instrument">Choose an instrument type:</label>
+        <select name=" instrument">
+          <option value="Electric Guitar">Electric Guitar</option>
+          <option value="Bass Guitar">Bass Guitar</option>
+          <option value="Drums">Drums</option>
+        </select>
+      </div>
+
     </div>
     <div class="form-group">
       <button type="submit" class="new-rig-form btn btn-primary">Next</button>
     </div>
-  </form>
+  </form> --}}
 </div>
 
 <script src="/js/new_rig.js"></script>
