@@ -111,3 +111,8 @@ html {
   background-size: cover;
   filter: saturate(2);
 }
+
+/* ----------------  CREATE NEW RIG STAGING AREA ------------------ */
+.staging-card {
+  width: 18rem;
+}
