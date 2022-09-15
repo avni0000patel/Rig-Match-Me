@@ -2,6 +2,7 @@ const sequelize = require("../config/connection");
 const seedUsers = require("./user_data");
 const seedGenre = require("./genre_data");
 const seedInstruments = require("./instrument_data");
+const seedInstrumentGenre = require("./instrument_genre");
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
@@ -15,6 +16,9 @@ const seedAll = async () => {
 
   await seedInstruments();
   console.log("\n----- INSTRUMENTS SEEDED -----\n");
+
+  await seedInstrumentGenre();
+  console.log("\n----- INSTRUMENT_GENRE SEEDED -----\n");
 
   process.exit(0);
 };
