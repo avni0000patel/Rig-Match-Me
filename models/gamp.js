@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Guitar extends Model {}
+class Gamp extends Model {}
 
-Guitar.init(
+Gamp.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -36,8 +36,8 @@ Guitar.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "guitar",
+    modelName: "gamp",
   }
 );
 
-module.exports = Guitar;
+module.exports = Gamp;
