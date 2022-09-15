@@ -3,6 +3,8 @@ const User = require("./user");
 const Instrument = require("./instrument");
 const Rig = require("./rig");
 const Instrument_Genre = require("./instrument_genre");
+const Gamp = require("./gamp");
+const Gfx = require("./gfx");
 
 User.hasMany(Genre, {
   foreignKey: "user_id",
@@ -58,4 +60,12 @@ Instrument.belongsToMany(Genre, {
   onDelete: "CASCADE",
 });
 
-module.exports = { Genre, User, Instrument, Rig, Instrument_Genre };
+Instrument.hasOne(Gamp);
+
+Gamp.belongsTo(Instrument);
+
+Instrument.hasOne(Gfx);
+
+Gfx.belongsTo(Instrument);
+
+module.exports = { Genre, User, Instrument, Rig, Instrument_Genre, Gamp, Gfx };

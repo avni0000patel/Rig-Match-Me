@@ -3,6 +3,8 @@ const seedUsers = require("./user_data");
 const seedGenre = require("./genre_data");
 const seedInstruments = require("./instrument_data");
 const seedInstrumentGenre = require("./instrument_genre");
+const seedGamp = require("./g_amp");
+const seedGfx = require("./g_fx");
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
@@ -19,6 +21,12 @@ const seedAll = async () => {
 
   await seedInstrumentGenre();
   console.log("\n----- INSTRUMENT_GENRE SEEDED -----\n");
+
+  await seedGamp();
+  console.log("\n----- GAMP SEEDED -----\n");
+
+  await seedGfx();
+  console.log("\n----- GFX SEEDED -----\n");
 
   process.exit(0);
 };
