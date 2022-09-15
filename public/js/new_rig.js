@@ -23,9 +23,9 @@
 //   .addEventListener("submit", newFormHandler);
 
 const rigTasks = document.querySelectorAll(".rig-task");
-const stagingArea = document.querySelectorAll("#create-rig-staging-area");
+const stagingArea = document.querySelector("#create-rig-staging-area");
 
-let currentRigTask = 4;
+let currentRigTask = 0;
 
 // Display Next Rig Task and cross off the previous one
 function showNextRigTask(index) {
@@ -49,26 +49,68 @@ function createCard(name, desc, picture) {
   let cardText = document.createElement("p");
   let selectButton = document.createElement("a");
 
-  cardDiv.classList.add("card");
+  selectButton.id = "select-btn";
+
+  cardDiv.classList.add("card", "staging-card", "mx-4", "my-4");
   cardImage.classList.add("card-img-top");
-  cardBodyDiv.classList.add("card-body");
-  cardTitle.classList.add("card-title");
-  cardText.classList.add("card-text");
-  selectButton.classList.add("btn", "btn-primary");
+  cardBodyDiv.classList.add(
+    "card-body",
+    "d-flex",
+    "flex-column",
+    "align-items-center",
+    "text-light",
+    "bg-dark",
+    "justify-content-between",
+    "text-center"
+  );
+  cardTitle.classList.add("card-title", "fs-2");
+  cardText.classList.add("card-text", "fs-6");
+  selectButton.classList.add("btn", "btn-primary", "fs-2");
 
   cardImage.setAttribute("src", picture);
   cardTitle.textContent = name;
   cardText.textContent = desc;
+  selectButton.textContent = "Select this Genre";
 
   cardDiv.appendChild(cardImage);
   cardBodyDiv.appendChild(cardTitle);
   cardBodyDiv.appendChild(cardText);
   cardBodyDiv.appendChild(selectButton);
   cardDiv.appendChild(cardBodyDiv);
+  return cardDiv;
 }
 
-function addGenre() {
+function addGenres() {
   let genreContainer = document.createElement("div");
+  genreContainer.classList.add(
+    "container-fluid",
+    "d-flex",
+    "flex-wrap",
+    "justify-content-center"
+  );
+  let genreImages = [
+    "/images/genres-01.svg",
+    "/images/genres-07.svg",
+    "/images/genres-02.svg",
+    "/images/genres-03.svg",
+    "/images/genres-04.svg",
+    "/images/genres-05.svg",
+    "/images/genres-06.svg",
+  ];
+  fetch("/api/genres").then((response) =>
+    response.json().then((allGenres) => {
+      for (let i = 0; i < allGenres.length; i++) {
+        genreContainer.appendChild(
+          createCard(
+            allGenres[i].genre,
+            allGenres[i].description,
+            genreImages[i]
+          )
+        );
+      }
+      stagingArea.appendChild(genreContainer);
+    })
+  );
 }
 
 function addInstrumentCategory() {}
@@ -101,3 +143,4 @@ function setupStagingArea(currentTask) {
 }
 
 showNextRigTask(currentRigTask);
+setupStagingArea(currentRigTask);
