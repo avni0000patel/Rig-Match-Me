@@ -1,7 +1,7 @@
-const Genre = require('./Genre');
-const User = require('./User');
-const Instrument = require('./Instrument');
-const Rig = require('./Rig');
+const Genre = require('./genre');
+const User = require('./user');
+const Instrument = require('./instrument');
+const Rig = require('./rig');
 
 User.hasMany(Genre, {
     foreignKey: 'user_id',
