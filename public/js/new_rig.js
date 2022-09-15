@@ -24,8 +24,22 @@
 
 const rigTasks = document.querySelectorAll(".rig-task");
 const stagingArea = document.querySelector("#create-rig-staging-area");
+const myGenres = [];
+let currentRigTask;
 
-let currentRigTask = 0;
+// Set Next Rig Task
+function nextRigTask() {
+  currentRigTask = currentRigTask + 1;
+  localStorage.setItem("currentRigTask", currentRigTask);
+  clearStagingArea();
+  showNextRigTask(currentRigTask);
+  setupStagingArea(currentRigTask);
+}
+
+//Clear stagingArea
+function clearStagingArea() {
+  stagingArea.innerHTML = "";
+}
 
 // Display Next Rig Task and cross off the previous one
 function showNextRigTask(index) {
@@ -41,7 +55,7 @@ function showNextRigTask(index) {
   }
 }
 
-function createCard(name, desc, picture) {
+function createCard(name, desc, picture, type) {
   let cardDiv = document.createElement("div");
   let cardImage = document.createElement("img");
   let cardBodyDiv = document.createElement("div");
@@ -50,6 +64,7 @@ function createCard(name, desc, picture) {
   let selectButton = document.createElement("a");
 
   selectButton.id = "select-btn";
+  cardBodyDiv.id = name;
 
   cardDiv.classList.add("card", "staging-card", "mx-4", "my-4");
   cardImage.classList.add("card-img-top");
@@ -63,6 +78,7 @@ function createCard(name, desc, picture) {
     "justify-content-between",
     "text-center"
   );
+
   cardTitle.classList.add("card-title", "fs-2");
   cardText.classList.add("card-text", "fs-6");
   selectButton.classList.add("btn", "btn-primary", "fs-2");
@@ -70,7 +86,7 @@ function createCard(name, desc, picture) {
   cardImage.setAttribute("src", picture);
   cardTitle.textContent = name;
   cardText.textContent = desc;
-  selectButton.textContent = "Select this Genre";
+  selectButton.textContent = "Select this " + type;
 
   cardDiv.appendChild(cardImage);
   cardBodyDiv.appendChild(cardTitle);
@@ -100,11 +116,13 @@ function addGenres() {
   fetch("/api/genres").then((response) =>
     response.json().then((allGenres) => {
       for (let i = 0; i < allGenres.length; i++) {
+        myGenres.push(allGenres[i].genre);
         genreContainer.appendChild(
           createCard(
             allGenres[i].genre,
             allGenres[i].description,
-            genreImages[i]
+            genreImages[i],
+            "Genre"
           )
         );
       }
@@ -113,7 +131,31 @@ function addGenres() {
   );
 }
 
-function addInstrumentCategory() {}
+function addInstrumentCategory() {
+  let instrumentContainer = document.createElement("div");
+  instrumentContainer.classList.add(
+    "container-fluid",
+    "d-flex",
+    "flex-wrap",
+    "justify-content-center"
+  );
+  let instrumentTypeImages = [
+    "/images/instrument_types-01.svg",
+    "/images/instrument_types-02.svg",
+    "/images/instrument_types-03.svg",
+  ];
+
+  fetch("/api/instruments/types")
+    .then((response) => response.json())
+    .then((types) => {
+      for (let i = 0; i < types.length; i++) {
+        instrumentContainer.appendChild(
+          createCard(types[i], "", instrumentTypeImages[i], "Category")
+        );
+      }
+      stagingArea.appendChild(instrumentContainer);
+    });
+}
 
 function addInstrumentModel() {}
 
@@ -121,10 +163,12 @@ function addFirstAccessory() {}
 
 function addSecondAccessory() {}
 
+// Set up Staging Area
 function setupStagingArea(currentTask) {
   switch (currentTask) {
     case 0:
       addGenres();
+      setEventDelegateForGenre();
       break;
     case 1:
       addInstrumentCategory();
@@ -138,9 +182,42 @@ function setupStagingArea(currentTask) {
     case 4:
       addSecondAccessory();
     default:
+      console.log(currentTask);
       console.log("Something weird happened...");
   }
 }
 
-showNextRigTask(currentRigTask);
-setupStagingArea(currentRigTask);
+// Check for existing local storage
+function verifyLocalStorageExists() {
+  if (localStorage.getItem("currentRigTask") === null) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function getCurrentRigTask() {
+  if (verifyLocalStorageExists()) {
+    currentRigTask = localStorage.getItem("currentRigTask");
+    showNextRigTask(currentRigTask);
+    setupStagingArea(currentRigTask);
+  } else {
+    currentRigTask = 0;
+    showNextRigTask(currentRigTask);
+    setupStagingArea(currentRigTask);
+  }
+}
+
+getCurrentRigTask();
+
+// Setup event Delegates
+function setEventDelegateForGenre() {
+  stagingArea.onclick = function (event) {
+    let myButton = event.target;
+
+    if (myButton.id === "select-btn") {
+      localStorage.setItem("rig-genre", myButton.parentElement.id);
+      nextRigTask();
+    }
+  };
+}

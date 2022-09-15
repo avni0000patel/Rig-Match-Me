@@ -18,4 +18,31 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get instrument by id
+router.get("/byId:id", async (req, res) => {
+  const instrumentId = req.params.id.slice(1);
+  try {
+    const instrumentData = await Instrument.findByPk(instrumentId);
+    res.status(200).json(instrumentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Get Instrument Types
+router.get("/types", async (req, res) => {
+  try {
+    const instrumentTypes = await Instrument.findAll();
+    let types = [];
+    for (instrument of instrumentTypes) {
+      if (!types.includes(instrument.instrument_type)) {
+        types.push(instrument.instrument_type);
+      }
+    }
+    res.status(200).json(types);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
