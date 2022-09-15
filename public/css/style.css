@@ -114,5 +114,13 @@ html {
 
 /* ----------------  CREATE NEW RIG STAGING AREA ------------------ */
 .staging-card {
-  width: 18rem;
+  max-width: 18%;
+}
+
+.card-title {
+  font-family: Caveat, cursive;
+}
+
+#select-btn {
+  font-family: Caveat, cursive;
 }
