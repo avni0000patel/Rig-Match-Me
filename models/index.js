@@ -5,6 +5,10 @@ const Rig = require("./rig");
 const Instrument_Genre = require("./instrument_genre");
 const Gamp = require("./gamp");
 const Gfx = require("./gfx");
+const Bamp = require("./bamp");
+const Bfx = require("./bfx");
+const Dpeds = require("./dpeds");
+const Dcymb = require("./dcymb");
 
 User.hasMany(Genre, {
   foreignKey: "user_id",
@@ -68,4 +72,32 @@ Instrument.hasOne(Gfx);
 
 Gfx.belongsTo(Instrument);
 
-module.exports = { Genre, User, Instrument, Rig, Instrument_Genre, Gamp, Gfx };
+Instrument.hasOne(Bamp);
+
+Bamp.belongsTo(Instrument);
+
+Instrument.hasOne(Bfx);
+
+Bfx.belongsTo(Instrument);
+
+Instrument.hasOne(Dpeds);
+
+Dpeds.belongsTo(Instrument);
+
+Instrument.hasOne(Dcymb);
+
+Dcymb.belongsTo(Instrument);
+
+module.exports = {
+  Genre,
+  User,
+  Instrument,
+  Rig,
+  Instrument_Genre,
+  Gamp,
+  Gfx,
+  Bamp,
+  Bfx,
+  Dpeds,
+  Dcymb,
+};
