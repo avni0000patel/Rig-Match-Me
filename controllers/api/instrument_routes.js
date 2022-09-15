@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const { User, Genre, Instrument, Instrument_Genre } = require("../../models");
+const { restore } = require("../../models/genre");
+const { Op } = require("sequelize");
 
 // The `/api/instruments` endpoint
 
@@ -41,6 +43,25 @@ router.get("/types", async (req, res) => {
     }
     res.status(200).json(types);
   } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Get instruments in bulk
+router.post("/bulkGetById", async (req, res) => {
+  let ids = req.body.instruments;
+  const type = req.body.instrumentType;
+  console.log(ids);
+  try {
+    const instruments = await Instrument.findAll({
+      where: {
+        id: ids,
+        instrument_type: type,
+      },
+    });
+    res.status(200).json(instruments);
+  } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });

@@ -157,7 +157,62 @@ function addInstrumentCategory() {
     });
 }
 
-function addInstrumentModel() {}
+function getCategoryId(category) {
+  let categories = ["Electric Guitar", "Bass Guitar", "Drums"];
+  for (let i = 0; i < categories.length; i++) {
+    if (category === categories[i]) {
+      return i;
+    }
+  }
+}
+
+function addInstrumentModel() {
+  let instrumentContainer = document.createElement("div");
+  instrumentContainer.classList.add(
+    "container-fluid",
+    "d-flex",
+    "flex-wrap",
+    "justify-content-center"
+  );
+  let instrumentType = localStorage.getItem("rig-category");
+  let selectedGenre = localStorage.getItem("rig-genre");
+  fetch("/api/genres").then((response) =>
+    response.json().then((allGenres) => {
+      for (genre of allGenres) {
+        if (genre.genre === selectedGenre) {
+          fetch("/api/instgenre/byGenre:" + genre.id)
+            .then((response) => response.json())
+            .then((instrumentsByGenre) => {
+              let instruments = [];
+              for (instrument of instrumentsByGenre) {
+                instruments.push(instrument.instrument_id);
+              }
+              fetch("/api/instruments/bulkGetById", {
+                method: "POST",
+                body: JSON.stringify({ instruments, instrumentType }),
+                headers: { "Content-Type": "application/json" },
+              })
+                .then((response) => response.json())
+                .then((allInstruments) => {
+                  console.log(allInstruments);
+                  for (let i = 0; i < allInstruments.length; i++) {
+                    instrumentContainer.appendChild(
+                      createCard(
+                        allInstruments[i].model,
+                        allInstruments[i].description,
+                        allInstruments[i].image,
+                        "Model"
+                      )
+                    );
+                  }
+                  stagingArea.appendChild(instrumentContainer);
+                });
+            });
+        }
+      }
+    })
+  );
+}
 
 function addFirstAccessory() {}
 
@@ -172,6 +227,7 @@ function setupStagingArea(currentTask) {
       break;
     case 1:
       addInstrumentCategory();
+      setEventDelegateForCategory();
       break;
     case 2:
       addInstrumentModel();
@@ -217,6 +273,30 @@ function setEventDelegateForGenre() {
 
     if (myButton.id === "select-btn") {
       localStorage.setItem("rig-genre", myButton.parentElement.id);
+      nextRigTask();
+    }
+  };
+}
+
+function setEventDelegateForCategory() {
+  stagingArea.onclick = function (event) {
+    let myButton = event.target;
+
+    if (myButton.id === "select-btn") {
+      localStorage.setItem("rig-category", myButton.parentElement.id);
+      console.log(myButton.parentElement.id);
+      nextRigTask();
+    }
+  };
+}
+
+function setEventDelegateForModel() {
+  stagingArea.onclick = function (event) {
+    let myButton = event.target;
+
+    if (myButton.id === "select-btn") {
+      localStorage.setItem("rig-model", myButton.parentElement.id);
+      console.log(myButton.parentElement.id);
       nextRigTask();
     }
   };
