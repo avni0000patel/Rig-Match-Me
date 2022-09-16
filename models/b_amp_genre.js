@@ -1,27 +1,27 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Bamp_Genre extends Model { }
+class B_amp_Genre extends Model {}
 
-Bamp_Genre.init(
-    {
-        genre: {
-            type: DataTypes.STRING,
-            primaryKey: false,
-            unique: false,
-        },
-        accessory_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            unique: false,
-        },
+B_amp_Genre.init(
+  {
+    genre_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      unique: false,
     },
-    {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: "bamp_genre",
-    }
+    bamp_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      unique: false,
+    },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "b_amp_genre",
+  }
 );
 
-module.exports = Bamp_Genre;
+module.exports = B_amp_Genre;

@@ -5,12 +5,12 @@ class G_fx_Genre extends Model {}
 
 G_fx_Genre.init(
   {
-    genre: {
-      type: DataTypes.STRING,
-      primaryKey: false,
+    genre_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
       unique: false,
     },
-    accessory_id: {
+    gfx_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       unique: false,

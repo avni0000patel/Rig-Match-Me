@@ -5,12 +5,12 @@ class D_cymb_Genre extends Model {}
 
 D_cymb_Genre.init(
   {
-    genre: {
-      type: DataTypes.STRING,
-      primaryKey: false,
+    genre_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
       unique: false,
     },
-    accessory_id: {
+    dcymb_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       unique: false,
