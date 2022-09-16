@@ -1,11 +1,47 @@
 const { Gamp, Gfx, Bamp, Bfx, Dpeds, Dcymb } = require("../../models");
 const router = require("express").Router();
+const { Op } = require("sequelize");
+const { json } = require("express");
 
+//Get all guitar amps
 router.get("/gamp", async (req, res) => {
   try {
     const gampData = await Gamp.findAll();
 
     res.status(200).json(gampData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+//Get all guitar amps by id
+router.get("/gamp/:id", async (req, res) => {
+  const gampId = req.params.id;
+  try {
+    const gampData = await Gamp.findAll({
+      where: {
+        id: gampId,
+      },
+    });
+
+    res.status(200).json(gampData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+//Get all guitar amps by id in Bulk
+router.post("/bulkGampById", async (req, res) => {
+  const gampIds = req.body.accArray;
+  try {
+    const guitarAmps = await Gamp.findAll({
+      where: {
+        id: gampIds,
+      },
+    });
+    res.status(200).json(guitarAmps);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -32,10 +32,26 @@ router.get("/", async (req, res) => {
 });
 
 // Get genre by ID
-router.get("/genre:id", async (req, res) => {
-  const instId = req.params.id.slice(1);
+router.get("/genre/:id", async (req, res) => {
+  const instId = req.params.id;
   try {
     const genreData = await Genre.findByPk(instId);
+    res.status(200).json(genreData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// get genre id by genre name
+router.get("/byName/:name", async (req, res) => {
+  const genreName = req.params.name;
+  try {
+    const genreData = await Genre.findAll({
+      where: {
+        genre: genreName,
+      },
+    });
     res.status(200).json(genreData);
   } catch (err) {
     console.log(err);
