@@ -2,7 +2,15 @@ const Genre = require("./genre");
 const User = require("./user");
 const Instrument = require("./instrument");
 const Rig = require("./rig");
+
 const Instrument_Genre = require("./instrument_genre");
+const G_amp_Genre = require("./g_amp_genre");
+const G_fx_Genre = require("./g_fx_genre");
+const B_amp_Genre = require("./b_amp_genre");
+const B_fx_Genre = require("./b_fx_genre");
+const D_peds_Genre = require("./d_peds_genre");
+const D_cymb_Genre = require("./d_cymb_genre");
+
 const Gamp = require("./gamp");
 const Gfx = require("./gfx");
 const Bamp = require("./bamp");
