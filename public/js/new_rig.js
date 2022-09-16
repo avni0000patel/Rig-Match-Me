@@ -1,27 +1,3 @@
-// const newFormHandler = async (event) => {
-//   event.preventDefault();
-
-//   const genre = document.querySelector("#genre").value.trim();
-
-//   const response = await fetch(`/api/rig`, {
-//     method: "POST",
-//     body: JSON.stringify({ genre }),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-
-//   if (response.ok) {
-//     document.location.replace("/homepage");
-//   } else {
-//     alert(response.statusText);
-//   }
-// };
-
-// document
-//   .querySelector(".new-rig-form")
-//   .addEventListener("submit", newFormHandler);
-
 const rigTasks = document.querySelectorAll(".rig-task");
 const stagingArea = document.querySelector("#create-rig-staging-area");
 const myGenres = [];
@@ -260,7 +236,7 @@ function returnAccessory(category, accNum) {
 }
 
 // Add First Accessory Set to Staging Area Element
-function addFirstAccessory() {
+function addAccessory(accNum) {
   let accOneContainer = document.createElement("div");
   accOneContainer.classList.add(
     "container-fluid",
@@ -269,22 +245,47 @@ function addFirstAccessory() {
     "justify-content-center"
   );
   let category = localStorage.getItem("rig-category");
-  fetch("/api/accessories/" + returnAccessory(category, 1))
+  let selectedGenre = localStorage.getItem("rig-genre");
+  let accArray = [];
+  let accName = returnAccessory(category, accNum);
+  let accIdName = `accessory.${accName}_id`;
+  fetch("/api/genres")
     .then((response) => response.json())
-    .then((accessories) => {
-      for (accessory of accessories) {
-        accOneContainer.appendChild(
-          createCard(
-            accessory.model,
-            accessory.description,
-            accessory.image,
-            "Accessory",
-            true,
-            accessory.budget
-          )
-        );
+    .then((genres) => {
+      let genreId;
+      for (genre of genres) {
+        if (selectedGenre === genre.genre) {
+          genreId = genre.id;
+        }
       }
-      stagingArea.appendChild(accOneContainer);
+      fetch("/api/" + accName + "/genreId/" + genreId)
+        .then((response) => response.json())
+        .then((accessories) => {
+          for (accessory of accessories) {
+            accArray.push(eval(accIdName));
+          }
+          fetch("/api/accessories/bulkGampById", {
+            method: "POST",
+            body: JSON.stringify({ accArray }),
+            headers: { "Content-Type": "application/json" },
+          })
+            .then((response) => response.json())
+            .then((accData) => {
+              for (acc of accData) {
+                accOneContainer.appendChild(
+                  createCard(
+                    acc.model,
+                    acc.description,
+                    acc.image,
+                    "Accessory",
+                    true,
+                    acc.budget
+                  )
+                );
+              }
+              stagingArea.appendChild(accOneContainer);
+            });
+        });
     });
 }
 
@@ -307,10 +308,12 @@ function setupStagingArea(currentTask) {
       setEventDelegateForModel();
       break;
     case 3:
-      addFirstAccessory();
+      addAccessory(1);
+      setEventDelegateForAcc1();
       break;
     case 4:
-      addSecondAccessory();
+      addAccessory(2);
+      setEventDelegateForAcc2();
     default:
       console.log(currentTask);
       console.log("Something weird happened...");
@@ -376,6 +379,32 @@ function setEventDelegateForModel() {
       localStorage.setItem("rig-model", myButton.parentElement.id);
       console.log(myButton.parentElement.id);
       nextRigTask();
+    }
+  };
+}
+
+// Setup event Delegates for Accessory 1
+function setEventDelegateForAcc1() {
+  stagingArea.onclick = function (event) {
+    let myButton = event.target;
+
+    if (myButton.id === "select-btn") {
+      localStorage.setItem("rig-acc1", myButton.parentElement.id);
+      console.log(myButton.parentElement.id);
+      nextRigTask();
+    }
+  };
+}
+
+// Setup event Delegates for Accessory 2
+function setEventDelegateForAcc2() {
+  stagingArea.onclick = function (event) {
+    let myButton = event.target;
+
+    if (myButton.id === "select-btn") {
+      localStorage.setItem("rig-acc2", myButton.parentElement.id);
+      console.log(myButton.parentElement.id);
+      console.log("All Done, Please Save!");
     }
   };
 }
