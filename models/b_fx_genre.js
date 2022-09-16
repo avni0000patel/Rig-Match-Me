@@ -5,12 +5,12 @@ class B_fx_Genre extends Model {}
 
 B_fx_Genre.init(
   {
-    genre: {
-      type: DataTypes.STRING,
-      primaryKey: false,
+    genre_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
       unique: false,
     },
-    accessory_id: {
+    bfx_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       unique: false,

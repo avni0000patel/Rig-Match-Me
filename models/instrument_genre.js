@@ -12,7 +12,7 @@ Instrument_Genre.init(
     },
     instrument_id: {
       type: DataTypes.INTEGER,
-      primaryKey: false,
+      primaryKey: true,
       unique: false,
     },
   },

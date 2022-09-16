@@ -1,27 +1,27 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Dpeds_Genre extends Model { }
+class D_peds_Genre extends Model {}
 
-Dpeds_Genre.init(
-    {
-        genre: {
-            type: DataTypes.STRING,
-            primaryKey: false,
-            unique: false,
-        },
-        accessory_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            unique: false,
-        },
+D_peds_Genre.init(
+  {
+    genre_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      unique: false,
     },
-    {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: "dpeds_genre",
-    }
+    dpeds_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      unique: false,
+    },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "d_peds_genre",
+  }
 );
 
-module.exports = Dpeds_Genre;
+module.exports = D_peds_Genre;

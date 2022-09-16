@@ -1,27 +1,27 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Gamp_Genre extends Model { }
+class G_amp_Genre extends Model {}
 
-Gamp_Genre.init(
-    {
-        genre: {
-            type: DataTypes.STRING,
-            primaryKey: false,
-            unique: false,
-        },
-        accessory_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            unique: false,
-        },
+G_amp_Genre.init(
+  {
+    genre_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      unique: false,
     },
-    {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: "gamp_genre",
-    }
+    gamp_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      unique: false,
+    },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "gamp_genre",
+  }
 );
 
-module.exports = Gamp_Genre;
+module.exports = G_amp_Genre;

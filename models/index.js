@@ -4,12 +4,12 @@ const Instrument = require("./instrument");
 const Rig = require("./rig");
 const Instrument_Genre = require("./instrument_genre");
 
-const G_amp_Genre = require("./g_amp_genre")
-const G_fx_Genre = require("./g_fx_genre")
-const B_amp_Genre = require("./b_amp_genre")
-const B_fx_Genre = require("./b_fx_genre")
-const D_peds_Genre = require("./d_peds_genre")
-const D_cymb_Genre = require("./d_cymb_genre")
+const G_amp_Genre = require("./g_amp_genre");
+const G_fx_Genre = require("./g_fx_genre");
+const B_amp_Genre = require("./b_amp_genre");
+const B_fx_Genre = require("./b_fx_genre");
+const D_peds_Genre = require("./d_peds_genre");
+const D_cymb_Genre = require("./d_cymb_genre");
 
 const Gamp = require("./gamp");
 const Gfx = require("./gfx");
@@ -68,62 +68,62 @@ Instrument.belongsToMany(Genre, {
   onDelete: "CASCADE",
 });
 
-Genre.belongsToMany(G_amp_Genre, {
+Genre.belongsToMany(Gamp, {
   through: "Gamp_Genre",
   onDelete: "CASCADE",
 });
 
-G_amp_Genre.belongsToMany(Genre, {
+Gamp.belongsToMany(Genre, {
   through: "Gamp_Genre",
   onDelete: "CASCADE",
 });
 
-Genre.belongsToMany(G_fx_Genre, {
+Genre.belongsToMany(Gfx, {
   through: "Gfx_Genre",
   onDelete: "CASCADE",
 });
 
-G_fx_Genre.belongsToMany(Genre, {
+Gfx.belongsToMany(Genre, {
   through: "Gfx_Genre",
   onDelete: "CASCADE",
 });
 
-Genre.belongsToMany(B_amp_Genre, {
+Genre.belongsToMany(Bamp, {
   through: "Bamp_Genre",
   onDelete: "CASCADE",
 });
 
-B_amp_Genre.belongsToMany(Genre, {
+Bamp.belongsToMany(Genre, {
   through: "Bamp_Genre",
   onDelete: "CASCADE",
 });
 
-Genre.belongsToMany(B_fx_Genre, {
+Genre.belongsToMany(Bfx, {
   through: "Bfx_Genre",
   onDelete: "CASCADE",
 });
 
-B_fx_Genre.belongsToMany(Genre, {
+Bfx.belongsToMany(Genre, {
   through: "Bfx_Genre",
   onDelete: "CASCADE",
 });
 
-Genre.belongsToMany(D_peds_Genre, {
+Genre.belongsToMany(Dpeds, {
   through: "Dpeds_Genre",
   onDelete: "CASCADE",
 });
 
-D_peds_Genre.belongsToMany(Genre, {
+Dpeds.belongsToMany(Genre, {
   through: "Dpeds_Genre",
   onDelete: "CASCADE",
 });
 
-Genre.belongsToMany(D_cymb_Genre, {
+Genre.belongsToMany(Dcymb, {
   through: "Dcymb_Genre",
   onDelete: "CASCADE",
 });
 
-D_cymb_Genre.belongsToMany(Genre, {
+Dcymb.belongsToMany(Genre, {
   through: "Dcymb_Genre",
   onDelete: "CASCADE",
 });
