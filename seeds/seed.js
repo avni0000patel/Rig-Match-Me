@@ -2,7 +2,15 @@ const sequelize = require("../config/connection");
 const seedUsers = require("./user_data");
 const seedGenre = require("./genre_data");
 const seedInstruments = require("./instrument_data");
+
 const seedInstrumentGenre = require("./instrument_genre");
+const seedGampGenre = require("./g_amp_genre");
+const seedGfxGenre = require("./g_fx_genre");
+const seedBampGenre = require("./b_amp_genre");
+const seedBfxGenre = require("./b_fx_genre");
+const seedDpedsGenre = require("./d_peds_genre");
+const seedDcymbGenre = require("./d_cymb_genre");
+
 const seedGamp = require("./g_amp");
 const seedGfx = require("./g_fx");
 const seedBamp = require("./b_amp");
