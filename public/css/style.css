@@ -83,6 +83,21 @@ html {
   font-family: "Caveat", cursive;
 }
 
+#contact-1 {
+  /* The image used */
+  background-image: url("../images/homeimage4.png");
+
+  /* Full height */
+  height: 100vh;
+
+  /* Create the parallax scrolling effect */
+  position: relative;
+  background-attachment: fixed;
+  background-position: top 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* --------------------------- CREATE RIG PAGE SPECFIC ------------------------------ */
 
 #create-rig-list {
