@@ -79,7 +79,7 @@ const instrumentdata = [
     instrument_type: "Electric Guitar",
     model: "ESP LTD Viper-1000",
     image:
-      "https://media.sweetwater.com/api/i/q-82__f-webp__ha-5f67079aba249658__hmac-b26804e5a41fe17da0f0c167d7f354a42b2ba3b2/images/closeup/750-Viper1kETLCMS_front.jpg.auto.webp",
+      "https://media.sweetwater.com/api/i/q-82__f-webp__ha-170ff796866653c3__hmac-33a10142673aeddcb181554d881ef113abfa6c27/images/guitars/LVP1000ETQSBCS/IW20010480/IW20010480-front-large.jpg.auto.webp",
     description:
       "6 string guitar with 2 humbucker pickups and coil tap functionality",
     // genre: 'Metal, Punk Rock,',
@@ -172,7 +172,7 @@ const instrumentdata = [
     instrument_type: "Bass Guitar",
     model: "Warwick RockBass Corvette $$ 5-string",
     image:
-      "https://media.sweetwater.com/api/i/q-82__f-webp__ha-18a48b9b8f1d1b2a__hmac-063add716d6f48f4b1d3f3578aa10af8481b47ce/images/closeup/750-CorvDB5RNBk_front.jpg.auto.webp",
+      "https://media.sweetwater.com/api/i/q-82__f-webp__ha-d6f80f8097393bec__hmac-eb5e3f7a395c801f84ae0c89c0605018b7d6902e/images/items/750/CorvDB5RNBk-large.jpg.auto.webp",
     description: "5 string bass guitar with 2 passive humbucker pickups",
     // genre: 'Rock, Hip-Hop, Metal, Country, Alternative Rock, Reggae',
     budget: "$$$$",
@@ -181,7 +181,7 @@ const instrumentdata = [
     instrument_type: "Bass Guitar",
     model: "Spector NS Ethos",
     image:
-      "https://media.sweetwater.com/api/i/q-82__f-webp__ha-18a48b9b8f1d1b2a__hmac-063add716d6f48f4b1d3f3578aa10af8481b47ce/images/closeup/750-CorvDB5RNBk_front.jpg.auto.webp",
+      "https://media.sweetwater.com/api/i/q-82__f-webp__ha-ae263d38cd5c0d64__hmac-8032470c00fba6a97cedcbf6cdc66e17b60a5083/images/guitars/NSEth4SFBG/W220209/W220209-front-large.jpg.auto.webp",
     description: "5 string bass guitar with 2 Aguilar humbucker pickups",
     // genre: 'Rock, Hip-Hop, Metal, Country, Alternative Rock, Reggae',
     budget: "$$$$",
