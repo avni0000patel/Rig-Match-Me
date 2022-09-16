@@ -42,20 +42,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-app.get("/contact", (req, res) => {
-    res.render('contact');
-});
+// app.get("/contact", (req, res) => {
+//     res.render('contact');
+// });
 
 app.post('/send', (req, res) => {
     console.log(req.body);
 
     const output = `
-    <p>You have a new contact request</p>
-    <h3>Contact Details</h3>
+    <h3>You have a new contact request!</h3>
+    <h3>Contact Details:</h3>
     <ul>
         <li>Name: ${req.body.name}</li>
         <li>Email: ${req.body.email}</li>
-    </ul
+    </ul>
     <h3>Message:</h3>
     <p>${req.body.message}</p>
     `
@@ -75,14 +75,12 @@ app.post('/send', (req, res) => {
     let info = transporter.sendMail({
         from: '"Jaquan Cummerata " <jaquan.cummerata@ethereal.email>', // sender address
         to: "AlvinKPollard@gmail.com, jdanleano@gmail.com", // list of receivers
-        subject: "Hello from NodeMailer", // Subject line
-        text: "Hello world?", // plain text body
+        subject: "NodeMailer", // Subject line
+        text: "Hello", // plain text body
         html: output // html body
     });
 
     console.log(info);
-
-    res.render('contact', { msg: 'Email has been sent' });
 
 });
 
