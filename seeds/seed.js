@@ -52,6 +52,24 @@ const seedAll = async () => {
   await seedDcymb();
   console.log("\n----- DCYMB SEEDED -----\n");
 
+  await seedGampGenre();
+  console.log("\n----- GAMP_GENRE SEEDED -----\n");
+
+  await seedGfxGenre();
+  console.log("\n----- GFX_GENRE SEEDED -----\n");
+
+  await seedBampGenre();
+  console.log("\n----- BAMP_GENRE SEEDED -----\n");
+
+  await seedBfxGenre();
+  console.log("\n----- BFX_GENRE SEEDED -----\n");
+
+  await seedDpedsGenre();
+  console.log("\n----- DPEDS_GENRE SEEDED -----\n");
+
+  await seedDcymbGenre();
+  console.log("\n----- DCYMB_GENRE SEEDED -----\n");
+
   process.exit(0);
 };
 
