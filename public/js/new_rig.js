@@ -55,13 +55,15 @@ function showNextRigTask(index) {
   }
 }
 
-function createCard(name, desc, picture, type) {
+// Create and return a Bootstrap formatted card
+function createCard(name, desc, picture, type, useBudget, budget) {
   let cardDiv = document.createElement("div");
   let cardImage = document.createElement("img");
   let cardBodyDiv = document.createElement("div");
   let cardTitle = document.createElement("h5");
   let cardText = document.createElement("p");
   let selectButton = document.createElement("a");
+  let cardBudget = document.createElement("p");
 
   selectButton.id = "select-btn";
   cardBodyDiv.id = name;
@@ -91,11 +93,17 @@ function createCard(name, desc, picture, type) {
   cardDiv.appendChild(cardImage);
   cardBodyDiv.appendChild(cardTitle);
   cardBodyDiv.appendChild(cardText);
+  if (useBudget) {
+    cardBudget.classList.add("card-budget", "card-text", "fs-1");
+    cardBudget.textContent = budget;
+    cardBodyDiv.appendChild(cardBudget);
+  }
   cardBodyDiv.appendChild(selectButton);
   cardDiv.appendChild(cardBodyDiv);
   return cardDiv;
 }
 
+// Add Genres to Staging Area Element
 function addGenres() {
   let genreContainer = document.createElement("div");
   genreContainer.classList.add(
@@ -122,7 +130,8 @@ function addGenres() {
             allGenres[i].genre,
             allGenres[i].description,
             genreImages[i],
-            "Genre"
+            "Genre",
+            false
           )
         );
       }
@@ -131,6 +140,7 @@ function addGenres() {
   );
 }
 
+// Add Instrument Category to Staging Area Element
 function addInstrumentCategory() {
   let instrumentContainer = document.createElement("div");
   instrumentContainer.classList.add(
@@ -150,13 +160,14 @@ function addInstrumentCategory() {
     .then((types) => {
       for (let i = 0; i < types.length; i++) {
         instrumentContainer.appendChild(
-          createCard(types[i], "", instrumentTypeImages[i], "Category")
+          createCard(types[i], "", instrumentTypeImages[i], "Category", false)
         );
       }
       stagingArea.appendChild(instrumentContainer);
     });
 }
 
+// return the Category ID when supplied with a Category name
 function getCategoryId(category) {
   let categories = ["Electric Guitar", "Bass Guitar", "Drums"];
   for (let i = 0; i < categories.length; i++) {
@@ -166,6 +177,7 @@ function getCategoryId(category) {
   }
 }
 
+// Add instrument model to Staging Area Element
 function addInstrumentModel() {
   let instrumentContainer = document.createElement("div");
   instrumentContainer.classList.add(
@@ -201,7 +213,9 @@ function addInstrumentModel() {
                         allInstruments[i].model,
                         allInstruments[i].description,
                         allInstruments[i].image,
-                        "Model"
+                        "Model",
+                        true,
+                        allInstruments[i].budget
                       )
                     );
                   }
@@ -214,8 +228,67 @@ function addInstrumentModel() {
   );
 }
 
-function addFirstAccessory() {}
+// Return Accessory path
+function returnAccessory(category, accNum) {
+  switch (accNum) {
+    case 1:
+      switch (category) {
+        case "Electric Guitar":
+          return "gamp";
+        case "Bass Guitar":
+          return "bamp";
+        case "Drums":
+          return "dpeds";
+        default:
+          console.log("Something went wrong in the Acc1 Category Switch");
+      }
+      break;
+    case 2:
+      switch (category) {
+        case "Electric Guitar":
+          return "gfx";
+        case "Bass Guitar":
+          return "bfx";
+        case "Drums":
+          return "dcymb";
+        default:
+          console.log("Something went wrong in the Acc2 Category Switch");
+      }
+    default:
+      console.log("Something went wrong in the AccNum Switch");
+  }
+}
 
+// Add First Accessory Set to Staging Area Element
+function addFirstAccessory() {
+  let accOneContainer = document.createElement("div");
+  accOneContainer.classList.add(
+    "container-fluid",
+    "d-flex",
+    "flex-wrap",
+    "justify-content-center"
+  );
+  let category = localStorage.getItem("rig-category");
+  fetch("/api/accessories/" + returnAccessory(category, 1))
+    .then((response) => response.json())
+    .then((accessories) => {
+      for (accessory of accessories) {
+        accOneContainer.appendChild(
+          createCard(
+            accessory.model,
+            accessory.description,
+            accessory.image,
+            "Accessory",
+            true,
+            accessory.budget
+          )
+        );
+      }
+      stagingArea.appendChild(accOneContainer);
+    });
+}
+
+// Add Second Accessory Set to Staging Area Element
 function addSecondAccessory() {}
 
 // Set up Staging Area
@@ -231,6 +304,7 @@ function setupStagingArea(currentTask) {
       break;
     case 2:
       addInstrumentModel();
+      setEventDelegateForModel();
       break;
     case 3:
       addFirstAccessory();
@@ -252,6 +326,7 @@ function verifyLocalStorageExists() {
   }
 }
 
+// Check if currentRigTask exists in Local Storage
 function getCurrentRigTask() {
   if (verifyLocalStorageExists()) {
     currentRigTask = localStorage.getItem("currentRigTask");
@@ -264,9 +339,10 @@ function getCurrentRigTask() {
   }
 }
 
+// Call getCurrentRigTask() when page loads
 getCurrentRigTask();
 
-// Setup event Delegates
+// Setup event Delegates for Genre
 function setEventDelegateForGenre() {
   stagingArea.onclick = function (event) {
     let myButton = event.target;
@@ -278,6 +354,7 @@ function setEventDelegateForGenre() {
   };
 }
 
+// Setup event Delegates for Category
 function setEventDelegateForCategory() {
   stagingArea.onclick = function (event) {
     let myButton = event.target;
@@ -290,6 +367,7 @@ function setEventDelegateForCategory() {
   };
 }
 
+// Setup event Delegates for Model
 function setEventDelegateForModel() {
   stagingArea.onclick = function (event) {
     let myButton = event.target;
