@@ -634,7 +634,7 @@ function setEventDelegateForSummary() {
           body: JSON.stringify({ myCurrentRig }),
           headers: { "Content-Type": "application/json" },
         }).then(() => {
-          console.log("Rig Submitted");
+          location.reload();
         });
       } else if (myButton.innerText === "Start Over") {
         console.log("start over");

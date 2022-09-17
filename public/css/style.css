@@ -139,3 +139,47 @@ html {
 #select-btn {
   font-family: Caveat, cursive;
 }
+
+/* ---------------------  VIEW RIGS RELATED ------------------------ */
+
+#view-rigs-staging-area {
+  background-image: url("../images/view_rigs_background.jpg");
+  background-size: cover;
+  filter: saturate(2);
+}
+
+.view-rig-card {
+  max-width: 10rem;
+  max-height: 10rem;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(8, 8, 8, 1) 100%
+  );
+}
+
+#view-rig-card-text {
+  text-align: center;
+  pointer-events: none;
+  font-family: Caveat, cursive;
+  text-align: justify;
+  font-weight: 900;
+}
+
+#previous-rigs-staging-area {
+  background-image: url("../images/chalkboard2.jpg");
+  background-size: contain;
+}
+
+#display-container {
+  background-image: url("../images/display-container-bg.jpg");
+  background-size: cover;
+  border-radius: 25px;
+}
+
+#rig-card-style {
+  border-radius: 25px 0px 0px 25px;
+  max-width: 65%;
+}

@@ -8,7 +8,9 @@ const session = require("express-session");
 router.get("/", async (req, res) => {
   try {
     const rigData = await Rig.findAll({
-      // include: [{ model: User }, { model: Genre }, { model: Instrument }]
+      where: {
+        user_id: req.session.user_id,
+      },
     });
 
     res.status(200).json(rigData);
