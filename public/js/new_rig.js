@@ -456,7 +456,8 @@ bottomContainer.classList.add(
   "d-flex",
   "flex-wrap",
   "justify-content-center",
-  "mt-6"
+  "mt-6",
+  "flex-column"
 );
 
 function showSaveButton() {
@@ -555,6 +556,7 @@ function getCurrentRigTask() {
 
 // Call getCurrentRigTask() when page loads
 window.addEventListener("load", function () {
+  this.localStorage.removeItem("currentRigTask");
   getCurrentRigTask();
 });
 
