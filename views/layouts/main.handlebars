@@ -41,14 +41,6 @@
                 <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
               </li>
 
-              <li class="nav-item px-4">
-                <a class="nav-link active text-light" aria-current="page" href="#bg-img-2">About Us</a>
-              </li>
-
-              <li class="nav-item px-4">
-                <a class="nav-link active text-light" aria-current="page" href="#contact-1">Contact Us</a>
-              </li>
-
               {{#if logged_in}}
               <li class="nav-item px-4">
                 <a class="nav-link text-light" href="/new_rig" id="newRig">Build a New Rig</a>
@@ -63,6 +55,15 @@
               </li>
 
               {{else}}
+
+              <li class="nav-item px-4">
+                <a class="nav-link active text-light" aria-current="page" href="#bg-img-2">About Us</a>
+              </li>
+
+              <li class="nav-item px-4">
+                <a class="nav-link active text-light" aria-current="page" href="#contact-1">Contact Us</a>
+              </li>
+
               <li class="nav-item px-4">
                 <a class="nav-link text-light" href="" data-bs-toggle="modal" data-bs-target="#login">Log In</a>
               </li>
