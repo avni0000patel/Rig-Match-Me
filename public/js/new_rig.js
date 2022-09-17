@@ -1,7 +1,9 @@
 const rigTasks = document.querySelectorAll(".rig-task");
 const stagingArea = document.querySelector("#create-rig-staging-area");
+const chalkboard = document.querySelector("#chalkboard");
 const myGenres = [];
 let currentRigTask;
+let myCurrentRig = [];
 
 // Set Next Rig Task
 function nextRigTask() {
@@ -27,12 +29,14 @@ function showNextRigTask(index) {
         rigTasks[i].classList.add("text-decoration-line-through");
         rigTasks[i].classList.replace("invisible", "visible");
       }
-    rigTasks[index].classList.replace("invisible", "visible");
+    if (index < 4) {
+      rigTasks[index].classList.replace("invisible", "visible");
+    }
   }
 }
 
 // Create and return a Bootstrap formatted card
-function createCard(name, desc, picture, type, useBudget, budget) {
+function createCard(name, desc, picture, type, useBudget, budget, includeBtn) {
   let cardDiv = document.createElement("div");
   let cardImage = document.createElement("img");
   let cardBodyDiv = document.createElement("div");
@@ -74,7 +78,9 @@ function createCard(name, desc, picture, type, useBudget, budget) {
     cardBudget.textContent = budget;
     cardBodyDiv.appendChild(cardBudget);
   }
-  cardBodyDiv.appendChild(selectButton);
+  if (includeBtn) {
+    cardBodyDiv.appendChild(selectButton);
+  }
   cardDiv.appendChild(cardBodyDiv);
   return cardDiv;
 }
@@ -107,7 +113,9 @@ function addGenres() {
             allGenres[i].description,
             genreImages[i],
             "Genre",
-            false
+            false,
+            "",
+            true
           )
         );
       }
@@ -136,7 +144,15 @@ function addInstrumentCategory() {
     .then((types) => {
       for (let i = 0; i < types.length; i++) {
         instrumentContainer.appendChild(
-          createCard(types[i], "", instrumentTypeImages[i], "Category", false)
+          createCard(
+            types[i],
+            "",
+            instrumentTypeImages[i],
+            "Category",
+            false,
+            "",
+            true
+          )
         );
       }
       stagingArea.appendChild(instrumentContainer);
@@ -182,7 +198,6 @@ function addInstrumentModel() {
               })
                 .then((response) => response.json())
                 .then((allInstruments) => {
-                  console.log(allInstruments);
                   for (let i = 0; i < allInstruments.length; i++) {
                     instrumentContainer.appendChild(
                       createCard(
@@ -191,7 +206,8 @@ function addInstrumentModel() {
                         allInstruments[i].image,
                         "Model",
                         true,
-                        allInstruments[i].budget
+                        allInstruments[i].budget,
+                        true
                       )
                     );
                   }
@@ -235,7 +251,7 @@ function returnAccessory(category, accNum) {
   }
 }
 
-// Add First Accessory Set to Staging Area Element
+// Add Accessory Set to Staging Area Element
 function addAccessory(accNum) {
   let accOneContainer = document.createElement("div");
   accOneContainer.classList.add(
@@ -249,6 +265,7 @@ function addAccessory(accNum) {
   let accArray = [];
   let accName = returnAccessory(category, accNum);
   let accIdName = `accessory.${accName}_id`;
+  let accNameBulk = `bulk${accName}ById`;
   fetch("/api/genres")
     .then((response) => response.json())
     .then((genres) => {
@@ -264,7 +281,7 @@ function addAccessory(accNum) {
           for (accessory of accessories) {
             accArray.push(eval(accIdName));
           }
-          fetch("/api/accessories/bulkGampById", {
+          fetch("/api/accessories/" + accNameBulk, {
             method: "POST",
             body: JSON.stringify({ accArray }),
             headers: { "Content-Type": "application/json" },
@@ -279,7 +296,8 @@ function addAccessory(accNum) {
                     acc.image,
                     "Accessory",
                     true,
-                    acc.budget
+                    acc.budget,
+                    true
                   )
                 );
               }
@@ -289,8 +307,196 @@ function addAccessory(accNum) {
     });
 }
 
-// Add Second Accessory Set to Staging Area Element
-function addSecondAccessory() {}
+// get One Genre
+function getOneGenre(name) {
+  let genreImages = [
+    "/images/genres-01.svg",
+    "/images/genres-07.svg",
+    "/images/genres-02.svg",
+    "/images/genres-03.svg",
+    "/images/genres-04.svg",
+    "/images/genres-05.svg",
+    "/images/genres-06.svg",
+  ];
+
+  fetch("/api/genres").then((response) =>
+    response.json().then((genres) => {
+      let myCard;
+      for (let i = 0; i < genres.length; i++) {
+        if (name === genres[i].genre) {
+          let myGenre = genres[i];
+          myCard = createCard(
+            name,
+            myGenre.description,
+            genreImages[i],
+            "Genre",
+            false,
+            "",
+            false
+          );
+        }
+      }
+      topContainer.appendChild(myCard);
+    })
+  );
+}
+
+// get One Category
+function getOneCategory(name) {
+  let image;
+
+  switch (name) {
+    case "Electric Guitar":
+      image = "/images/instrument_types-01.svg";
+      break;
+    case "Bass Guitar":
+      image = "/images/instrument_types-02.svg";
+      break;
+    case "Drums":
+      image = "/images/instrument_types-03.svg";
+      break;
+    default:
+      console.log("Couldn't find your category");
+  }
+
+  topContainer.appendChild(
+    createCard(name, "", image, "Category", false, "", false)
+  );
+}
+
+// get One Model
+function getOneModel(name) {
+  fetch("/api/instruments").then((response) =>
+    response.json().then((models) => {
+      let myCard;
+      for (let i = 0; i < models.length; i++) {
+        if (name === models[i].model) {
+          myCard = createCard(
+            name,
+            models[i].description,
+            models[i].image,
+            "Model",
+            true,
+            models[i].budget
+          );
+          topContainer.appendChild(myCard);
+        }
+      }
+    })
+  );
+}
+
+// get one Accessory
+function getOneAccessory(accNum, name, category, selectedGenre) {
+  let accName = returnAccessory(category, accNum);
+  let accIdName = `accessory.${accName}_id`;
+  let accNameBulk = `bulk${accName}ById`;
+  let accArray = [];
+  fetch("/api/genres").then((response) =>
+    response.json().then((genres) => {
+      let genreId;
+      for (genre of genres) {
+        if (selectedGenre === genre.genre) {
+          genreId = genre.id;
+        }
+      }
+      fetch("/api/" + accName + "/genreId/" + genreId)
+        .then((response) => response.json())
+        .then((accessories) => {
+          for (accessory of accessories) {
+            accArray.push(eval(accIdName));
+          }
+          fetch("/api/accessories/" + accNameBulk, {
+            method: "POST",
+            body: JSON.stringify({ accArray }),
+            headers: { "Content-Type": "application/json" },
+          })
+            .then((response) => response.json())
+            .then((accData) => {
+              let myCard;
+              for (let i = 0; i < accData.length; i++) {
+                if (name === accData[i].model) {
+                  myCard = createCard(
+                    name,
+                    accData[i].description,
+                    accData[i].image,
+                    "Accessory",
+                    true,
+                    accData[i].budget,
+                    false
+                  );
+                }
+              }
+              topContainer.appendChild(myCard);
+            });
+        });
+    })
+  );
+}
+
+//Get show save button
+
+let summary = document.createElement("div");
+let topContainer = document.createElement("div");
+let bottomContainer = document.createElement("div");
+summary.classList.add(
+  "container-fluid",
+  "d-flex",
+  "flex-wrap",
+  "justify-content-center"
+);
+topContainer.classList.add(
+  "container-fluid",
+  "d-flex",
+  "flex-nowrap",
+  "justify-content-center"
+);
+bottomContainer.classList.add(
+  "container-fluid",
+  "d-flex",
+  "flex-wrap",
+  "justify-content-center",
+  "mt-6"
+);
+
+function showSaveButton() {
+  let genre = localStorage.getItem("rig-genre");
+  myCurrentRig.push(genre);
+  let model = localStorage.getItem("rig-model");
+  myCurrentRig.push(model);
+  let category = localStorage.getItem("rig-category");
+  let acc1 = localStorage.getItem("rig-acc1");
+  myCurrentRig.push(acc1);
+  let acc2 = localStorage.getItem("rig-acc2");
+  myCurrentRig.push(acc2);
+  let saveButton = document.createElement("button");
+  let startOverButton = document.createElement("button");
+
+  saveButton.classList.add("btn", "btn-success", "btn-lg", "my-3", "fs-3");
+  saveButton.setAttribute("type", "button");
+  saveButton.textContent = "Save Rig";
+  saveButton.id = "select-btn";
+
+  startOverButton.classList.add("btn", "btn-danger", "btn-lg", "mx-y", "fs-3");
+  startOverButton.setAttribute("type", "button");
+  startOverButton.textContent = "Start Over";
+  startOverButton.id = "select-btn";
+
+  getOneGenre(genre);
+  getOneCategory(category);
+  getOneModel(model);
+
+  getOneAccessory(1, acc1, category, genre);
+  getOneAccessory(2, acc2, category, genre);
+
+  bottomContainer.appendChild(saveButton);
+  bottomContainer.appendChild(startOverButton);
+
+  chalkboard.appendChild(bottomContainer);
+  summary.appendChild(topContainer);
+
+  stagingArea.appendChild(summary);
+}
 
 // Set up Staging Area
 function setupStagingArea(currentTask) {
@@ -314,6 +520,11 @@ function setupStagingArea(currentTask) {
     case 4:
       addAccessory(2);
       setEventDelegateForAcc2();
+      break;
+    case 5:
+      showSaveButton();
+      setEventDelegateForSummary();
+      break;
     default:
       console.log(currentTask);
       console.log("Something weird happened...");
@@ -343,7 +554,9 @@ function getCurrentRigTask() {
 }
 
 // Call getCurrentRigTask() when page loads
-getCurrentRigTask();
+window.addEventListener("load", function () {
+  getCurrentRigTask();
+});
 
 // Setup event Delegates for Genre
 function setEventDelegateForGenre() {
@@ -364,7 +577,6 @@ function setEventDelegateForCategory() {
 
     if (myButton.id === "select-btn") {
       localStorage.setItem("rig-category", myButton.parentElement.id);
-      console.log(myButton.parentElement.id);
       nextRigTask();
     }
   };
@@ -377,7 +589,6 @@ function setEventDelegateForModel() {
 
     if (myButton.id === "select-btn") {
       localStorage.setItem("rig-model", myButton.parentElement.id);
-      console.log(myButton.parentElement.id);
       nextRigTask();
     }
   };
@@ -390,7 +601,6 @@ function setEventDelegateForAcc1() {
 
     if (myButton.id === "select-btn") {
       localStorage.setItem("rig-acc1", myButton.parentElement.id);
-      console.log(myButton.parentElement.id);
       nextRigTask();
     }
   };
@@ -403,8 +613,32 @@ function setEventDelegateForAcc2() {
 
     if (myButton.id === "select-btn") {
       localStorage.setItem("rig-acc2", myButton.parentElement.id);
-      console.log(myButton.parentElement.id);
-      console.log("All Done, Please Save!");
+      nextRigTask();
+    }
+  };
+}
+
+// Setup event Delegates for Summary
+function setEventDelegateForSummary() {
+  chalkboard.onclick = function (event) {
+    let myButton = event.target;
+    console.log("hello");
+
+    if (myButton.id === "select-btn") {
+      if (myButton.innerText === "Save Rig") {
+        console.log(myCurrentRig);
+        fetch("/api/rigs/", {
+          method: "POST",
+          body: JSON.stringify({ myCurrentRig }),
+          headers: { "Content-Type": "application/json" },
+        }).then(() => {
+          console.log("Rig Submitted");
+        });
+      } else if (myButton.innerText === "Start Over") {
+        console.log("start over");
+        localStorage.removeItem("currentRigTask");
+        location.reload();
+      }
     }
   };
 }
