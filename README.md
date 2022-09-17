@@ -4,5 +4,7 @@ In this project we have created an application that provides a guided tour of in
 https://github.com/avni0000patel/Rig-Match-Me
 ## Deployed Application Link
 https://serene-thicket-89290.herokuapp.com/
+<br />
+http://www.rigmatchme.com/
 ## Screenshot
 ![rig-match-me-screenshot](https://user-images.githubusercontent.com/104175474/190836122-7f39248d-09f5-4d52-8d8e-3089462229de.png)
