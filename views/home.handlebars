@@ -20,21 +20,13 @@
   </div>
 </section>
 
-<section id="bg-img-3">
-  <div class="text-2 position-absolute top-50 start-50 translate-middle border">
-    <span class="col-md-8 fs-5 text-center text-light home-text">What are you
-      waiting for? Get started today for free!
-      <button type="button" class="btn btn-success text-light" data-bs-toggle="modal" data-bs-target="#signup">Sign
-        Up!</button>
-    </span>
-  </div>
-</section>
-
 <section id="contact-1">
   <div class="text-2 position-absolute top-50 start-50 translate-middle border">
     <div class="d-flex flex-column flex-fill">
       <div class="container">
-        <div class=="contact">
+        <div id="liveAlertPlaceholder"></div>
+        <div class="contact">
+          {{msg}}
           <h1 class="text-light home-text">Contact Us</h3>
             <form method="POST" action="send">
               <div class="form-group">
@@ -51,7 +43,7 @@
               </div>
               <br>
               <div class="form-group">
-                <button class="btn btn-primary home-text" type="submit">Submit</button>
+                <button class="btn btn-primary home-text" id="liveAlertBtn" type="submit">Submit</button>
               </div>
             </form>
         </div>
@@ -122,3 +114,4 @@
 
 <script src="/js/login.js"></script>
 <script src="/js/signup.js"></script>
+<script src="/js/alert.js"></script>
