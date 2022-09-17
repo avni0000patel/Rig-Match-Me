@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { User, Genre, Instrument, Rig } = require("../../models");
 // const withAuth = require('../../utils/auth');
 const { Op } = require("sequelize");
+const session = require("express-session");
 
 // Get all rigs
 router.get("/", async (req, res) => {
@@ -48,6 +49,7 @@ router.post("/", async (req, res) => {
       instrument: myCurrentRig[1],
       accessory1: myCurrentRig[2],
       accessory2: myCurrentRig[3],
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(rigData);
