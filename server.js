@@ -82,6 +82,8 @@ app.post('/send', (req, res) => {
 
     console.log(info);
 
+    res.status(200);
+
 });
 
 
