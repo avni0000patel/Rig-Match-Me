@@ -4,7 +4,33 @@ In this project we have created an application that provides a guided tour of in
 https://github.com/avni0000patel/Rig-Match-Me
 ## Deployed Application Link
 https://serene-thicket-89290.herokuapp.com/
-<br />
+
 http://www.rigmatchme.com/
+## Technologies Used
+HTML - creates the structure of Web pages
+
+CSS - creates the presentation of Web pages
+
+Bootstrap - the CSS framework
+
+Javascript - creates a dynamic and interactive experience for the user
+
+Express - the most popular Node web framework that makes it easy to work with routes
+
+Express-handlebars - connects the routes to html with handlebars
+
+MySQL - stores information in separate tables and connects with keys
+
+Sequelize - a Node js based object relational mapper that makes it easy to work with MySQL
+
+Dotenv - reads key value pairs from a .env file and can set them as environment variables 
+
+Bycrypt - hashes and salts passwords securely 
+
+Axios - makes HTTP requests from the browser and handle the transformation of request and response data 
+
+Connect-session-sequelize - a SQL session store using sequelize 
+
+Nodemailer - integrates a contact us page to have users send emails
 ## Screenshot
 ![rig-match-me-screenshot](https://user-images.githubusercontent.com/104175474/190836122-7f39248d-09f5-4d52-8d8e-3089462229de.png)
