@@ -14,6 +14,8 @@ Bootstrap - the CSS framework
 
 Javascript - creates a dynamic and interactive experience for the user
 
+Node JS - back-end JavaScript runtime environment that runs on a JavaScript Engine
+
 Express - the most popular Node web framework that makes it easy to work with routes
 
 Express-handlebars - connects the routes to html with handlebars
