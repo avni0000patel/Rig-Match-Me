@@ -32,5 +32,35 @@ Axios - makes HTTP requests from the browser and handle the transformation of re
 Connect-session-sequelize - a SQL session store using sequelize 
 
 Nodemailer - integrates a contact us page to have users send emails
+## Instructions
+Run the following:
+
+`npm init`
+
+`npm i`
+
+`npm install axios`
+
+`npm install bcrypt`
+
+`npm install connect-session-sequelize`
+
+`npm install dotenv`
+
+`npm install express`
+
+`npm install express-handlebars`
+
+`npm install express-session`
+
+`npm install mysql2`
+
+`npm install nodemailer`
+
+`npm install sequelize`
+
+`node server.js`
+
+`node seeds/seed.js`
 ## Screenshot
 ![rig-match-me-screenshot](https://user-images.githubusercontent.com/104175474/190836122-7f39248d-09f5-4d52-8d8e-3089462229de.png)
