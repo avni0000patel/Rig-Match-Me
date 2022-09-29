@@ -3,9 +3,8 @@ In this project we have created an application that provides a guided tour of in
 ## GitHub Link
 https://github.com/avni0000patel/Rig-Match-Me
 ## Deployed Application Link
-https://serene-thicket-89290.herokuapp.com/
+https://evening-fjord-11816.herokuapp.com/
 
-http://www.rigmatchme.com/
 ## Technologies Used
 HTML - creates the structure of Web pages
 
